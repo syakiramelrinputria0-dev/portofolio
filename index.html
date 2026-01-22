@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>K-Drama Hub - Portal Drama Korea Terlengkap</title>
+
+    <meta name="description" content="Portal lengkap drama Korea dengan informasi terbaru, jadwal tayang, ulasan, dan galeri foto. Temukan drama Korea favorit Anda di sini.">
+
+    <style>
+
+        body {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            line-height: 1.6;
+
+            transition: all 0.3s ease;
+
+        }
+
+        :root {
+
+            --primary-color: #6366f1;
+
+            --secondary-color: #8b5cf6;
+
+            --accent-color: #f59e0b;
+
+            --text-primary: #1f2937;
+
+            --text-secondary: #6b7280;
+
+            --bg-primary: #ffffff;
+
+            --bg-secondary: #f9fafb;
+
+            --border-color: #e5e7eb;
+
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+        }
+
+        [data-theme="dark"] {
+
+            --text-primary: #f9fafb;
+
+            --text-secondary: #d1d5db;
+
+            --bg-primary: #111827;
+
+            --bg-secondary: #1f2937;
+
+            --border-color: #374151;
+
+        }
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+        /* Header */
+
+        .header {
+
+            position: fixed;
+
+            top: 0;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            z-index: 1000;
+
+            transition: all 0.3s ease;
+
+            border-bottom: 1px solid var(--border-color);
+
+            padding: 1rem 0;
+
+        }
+
+        [data-theme="dark"] .header {
+
+            background: rgba(17, 24, 39, 0.95);
+
+        }
+
+        .nav-container {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 0 2rem;
+
+        }
+
+        .logo {
+
+            font-size: 1.5rem;
+
+            font-weight: 700;
+
+            color: var(--primary-color);
+
+            text-decoration: none;
+
+        }
+
+        .nav-menu {
+
+            display: flex;
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+
+            gap: 2rem;
+
+        }
+
+        .nav-link {
+
+            color: var(--text-primary);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .nav-link:hover {
+
+            color: var(--primary-color);
+
+        }
+
+        .nav-controls {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+        }
+
+        .theme-toggle, .lang-toggle {
+
+            background: none;
+
+            border: 2px solid var(--border-color);
+
+            border-radius: 50px;
+
+            padding: 0.5rem 1rem;
+
+            cursor: pointer;
+
+            color: var(--text-primary);
+
+            transition: all 0.3s ease;
+
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+
+            border-color: var(--primary-color);
+
+            color: var(--primary-color);
+
+        }
+
+        /* Hero Section with Video Background */
+
+        .hero {
+
+            height: 100vh;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            overflow: hidden;
+
+        }
+
+        .hero-video {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: -2;
+
+        }
+
+        .hero-overlay {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8));
+
+            z-index: -1;
+
+        }
+
+        .hero-content {
+
+            max-width: 800px;
+
+            padding: 2rem;
+
+            animation: fadeInUp 1s ease;
+
+        }
+
+        .hero h1 {
+
+            font-size: 3.5rem;
+
+            margin-bottom: 1rem;
+
+            font-weight: 700;
+
+        }
+
+        .hero p {
+
+            font-size: 1.2rem;
+
+            margin-bottom: 2rem;
+
+            opacity: 0.9;
+
+        }
+
+        .cta-button {
+
+            background: var(--accent-color);
+
+            color: white;
+
+            padding: 1rem 2rem;
+
+            border: none;
+
+            border-radius: 50px;
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+            margin-right: 1rem;
+
+        }
+
+        .cta-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+        .video-popup-btn {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            color: white;
+
+            border: 2px solid white;
+
+            padding: 1rem 2rem;
+
+            border-radius: 50px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+        }
+
+        .video-popup-btn:hover {
+
+            background: white;
+
+            color: var(--primary-color);
+
+        }
+
+        /* Main Container */
+
+        .main-container {
+
+            display: grid;
+
+            grid-template-columns: 1fr 300px;
+
+            gap: 2rem;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 4rem 2rem;
+
+        }
+
+        .content {
+
+            background: var(--bg-primary);
+
+        }
+
+        /* Search Section */
+
+        .search-section {
+
+            padding: 2rem 0;
+
+            text-align: center;
+
+            margin-bottom: 2rem;
+
+        }
+
+        .search-container {
+
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            position: relative;
+
+        }
+
+        .search-input {
+
+            width: 100%;
+
+            padding: 1rem 1.5rem;
+
+            border: 2px solid var(--border-color);
+
+            border-radius: 50px;
+
+            font-size: 1rem;
+
+            background: var(--bg-primary);
+
+            color: var(--text-primary);
+
+            transition: all 0.3s ease;
+
+        }
+
+        .search-input:focus {
+
+            outline: none;
+
+            border-color: var(--primary-color);
+
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+
+        }
+
+        /* Filter Tabs */
+
+        .filter-tabs {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 1rem;
+
+            margin-bottom: 2rem;
+
+            flex-wrap: wrap;
+
+        }
+
+        .tab-btn {
+
+            background: rgba(255,255,255,0.2);
+
+            color: var(--text-primary);
+
+            border: 2px solid var(--border-color);
+
+            padding: 0.75rem 1.5rem;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            backdrop-filter: blur(10px);
+
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+
+            background: var(--primary-color);
+
+            color: white;
+
+            border-color: var(--primary-color);
+
+        }
+
+        /* Drama Grid */
+
+        .drama-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+            gap: 2rem;
+
+            margin-bottom: 4rem;
+
+        }
+
+        .drama-card {
+
+            background: var(--bg-primary);
+
+            border-radius: 20px;
+
+            padding: 1.5rem;
+
+            box-shadow: var(--shadow);
+
+            transition: all 0.3s ease;
+
+            backdrop-filter: blur(10px);
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            animation: fadeInUp 0.6s ease forwards;
+
+        }
+
+        .drama-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: var(--shadow-lg);
+
+        }
+
+        .drama-title {
+
+            font-size: 1.4rem;
+
+            font-weight: bold;
+
+            color: var(--text-primary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .drama-year {
+
+            color: var(--primary-color);
+
+            font-weight: 600;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .drama-genre {
+
+            display: inline-block;
+
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+
+            color: white;
+
+            padding: 0.25rem 0.75rem;
+
+            border-radius: 15px;
+
+            font-size: 0.8rem;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .drama-description {
+
+            color: var(--text-secondary);
+
+            line-height: 1.6;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .drama-rating {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            margin-bottom: 1rem;
+
+        }
+
+        .stars {
+
+            color: #ffd700;
+
+            font-size: 1.2rem;
+
+        }
+
+        .rating-text {
+
+            color: var(--text-primary);
+
+            font-weight: 600;
+
+        }
+
+        .drama-viewers {
+
+            margin-left: auto;
+
+            color: var(--primary-color);
+
+            font-weight: 600;
+
+        }
+
+        .drama-cast {
+
+            font-size: 0.9rem;
+
+            color: var(--text-secondary);
+
+            font-style: italic;
+
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+
+            background: var(--bg-primary);
+
+            border-radius: 12px;
+
+            padding: 2rem;
+
+            box-shadow: var(--shadow);
+
+            height: fit-content;
+
+            position: sticky;
+
+            top: 100px;
+
+        }
+
+        .sidebar h3 {
+
+            color: var(--text-primary);
+
+            margin-bottom: 1rem;
+
+            font-size: 1.2rem;
+
+        }
+
+        .trending-item, .platform-item, .rated-item {
+
+            padding: 0.75rem;
+
+            margin-bottom: 0.5rem;
+
+            background: var(--bg-secondary);
+
+            border-radius: 8px;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .trending-item:hover, .platform-item:hover, .rated-item:hover {
+
+            background: var(--primary-color);
+
+            color: white;
+
+            transform: translateX(5px);
+
+        }
+
+        .rated-item {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        /* Testimonials */
+
+        .testimonials-section {
+
+            padding: 4rem 2rem;
+
+            background: var(--bg-secondary);
+
+            text-align: center;
+
+        }
+
+        .testimonials-carousel {
+
+            max-width: 800px;
+
+            margin: 2rem auto;
+
+            overflow: hidden;
+
+            border-radius: 12px;
+
+        }
+
+        .testimonial {
+
+            background: var(--bg-primary);
+
+            padding: 2rem;
+
+            margin: 0 1rem;
+
+            border-radius: 12px;
+
+            box-shadow: var(--shadow);
+
+            display: none;
+
+            animation: fadeIn 0.5s ease;
+
+        }
+
+        .testimonial.active {
+
+            display: block;
+
+        }
+
+        .testimonial-text {
+
+            font-size: 1.1rem;
+
+            color: var(--text-secondary);
+
+            margin-bottom: 1rem;
+
+            font-style: italic;
+
+        }
+
+        .testimonial-author {
+
+            font-weight: 600;
+
+            color: var(--text-primary);
+
+        }
+
+        .testimonial-rating {
+
+            color: var(--accent-color);
+
+            margin-top: 0.5rem;
+
+        }
+
+        /* Contact Form */
+
+        .contact-section {
+
+            padding: 4rem 2rem;
+
+            background: var(--bg-primary);
+
+        }
+
+        .contact-container {
+
+            max-width: 600px;
+
+            margin: 0 auto;
+
+        }
+
+        .form-group {
+
+            margin-bottom: 1.5rem;
+
+        }
+
+        .form-label {
+
+            display: block;
+
+            margin-bottom: 0.5rem;
+
+            font-weight: 500;
+
+            color: var(--text-primary);
+
+        }
+
+        .form-input, .form-textarea, .form-select {
+
+            width: 100%;
+
+            padding: 1rem;
+
+            border: 2px solid var(--border-color);
+
+            border-radius: 8px;
+
+            font-size: 1rem;
+
+            background: var(--bg-primary);
+
+            color: var(--text-primary);
+
+            transition: all 0.3s ease;
+
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+
+            outline: none;
+
+            border-color: var(--primary-color);
+
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+
+        }
+
+        .form-textarea {
+
+            resize: vertical;
+
+            min-height: 120px;
+
+        }
+
+        .rating-input {
+
+            display: flex;
+
+            gap: 0.5rem;
+
+            margin-top: 0.5rem;
+
+        }
+
+        .star-rating {
+
+            font-size: 1.5rem;
+
+            color: #ddd;
+
+            cursor: pointer;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .star-rating:hover,
+
+        .star-rating.active {
+
+            color: var(--accent-color);
+
+        }
+
+        /* Footer */
+
+        .footer {
+
+            background: var(--text-primary);
+
+            color: white;
+
+            padding: 3rem 2rem 1rem;
+
+        }
+
+        .footer-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 2rem;
+
+        }
+
+        .footer-section h3 {
+
+            margin-bottom: 1rem;
+
+            color: var(--primary-color);
+
+        }
+
+        .footer-links {
+
+            list-style: none;
+
+            padding: 0;
+
+        }
+
+        .footer-links li {
+
+            margin-bottom: 0.5rem;
+
+        }
+
+        .footer-links a {
+
+            color: #d1d5db;
+
+            text-decoration: none;
+
+            transition: color 0.3s ease;
+
+        }
+
+        .footer-links a:hover {
+
+            color: var(--primary-color);
+
+        }
+
+        .footer-bottom {
+
+            text-align: center;
+
+            margin-top: 2rem;
+
+            padding-top: 2rem;
+
+            border-top: 1px solid #374151;
+
+            color: #9ca3af;
+
+        }
+
+        /* Chatbot */
+
+        .chatbot {
+
+            position: fixed;
+
+            bottom: 2rem;
+
+            right: 2rem;
+
+            z-index: 1000;
+
+        }
+
+        .chatbot-toggle {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: var(--primary-color);
+
+            color: white;
+
+            border: none;
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+
+            box-shadow: var(--shadow-lg);
+
+            transition: all 0.3s ease;
+
+        }
+
+        .chatbot-toggle:hover {
+
+            transform: scale(1.1);
+
+        }
+
+        .chatbot-window {
+
+            position: absolute;
+
+            bottom: 80px;
+
+            right: 0;
+
+            width: 300px;
+
+            height: 400px;
+
+            background: var(--bg-primary);
+
+            border-radius: 12px;
+
+            box-shadow: var(--shadow-lg);
+
+            display: none;
+
+            flex-direction: column;
+
+            border: 1px solid var(--border-color);
+
+        }
+
+        .chatbot-header {
+
+            background: var(--primary-color);
+
+            color: white;
+
+            padding: 1rem;
+
+            border-radius: 12px 12px 0 0;
+
+            font-weight: 600;
+
+        }
+
+        .chatbot-messages {
+
+            flex: 1;
+
+            padding: 1rem;
+
+            overflow-y: auto;
+
+            background: var(--bg-primary);
+
+        }
+
+        .chat-message {
+
+            margin-bottom: 1rem;
+
+            padding: 0.5rem;
+
+            border-radius: 8px;
+
+            max-width: 80%;
+
+        }
+
+        .chat-message.user {
+
+            background: var(--primary-color);
+
+            color: white;
+
+            margin-left: auto;
+
+        }
+
+        .chat-message.bot {
+
+            background: var(--bg-secondary);
+
+            color: var(--text-primary);
+
+        }
+
+        .chatbot-input {
+
+            padding: 1rem;
+
+            border-top: 1px solid var(--border-color);
+
+            background: var(--bg-primary);
+
+            border-radius: 0 0 12px 12px;
+
+        }
+
+        .chatbot-input input {
+
+            width: 100%;
+
+            padding: 0.5rem;
+
+            border: 1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            background: var(--bg-secondary);
+
+            color: var(--text-primary);
+
+        }
+
+        /* Video Popup */
+
+        .video-popup {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.9);
+
+            z-index: 2000;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .video-popup-content {
+
+            position: relative;
+
+            max-width: 90%;
+
+            max-height: 90%;
+
+        }
+
+        .video-popup video {
+
+            width: 100%;
+
+            height: auto;
+
+            border-radius: 12px;
+
+        }
+
+        .video-popup-close {
+
+            position: absolute;
+
+            top: -40px;
+
+            right: 0;
+
+            background: none;
+
+            border: none;
+
+            color: white;
+
+            font-size: 2rem;
+
+            cursor: pointer;
+
+        }
+
+        /* Animations */
+
+        @keyframes fadeInUp {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; }
+
+            to { opacity: 1; }
+
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 768px) {
+
+            .nav-menu {
+
+                display: none;
+
+            }
+
+            .hero h1 {
+
+                font-size: 2.5rem;
+
+            }
+
+            .main-container {
+
+                grid-template-columns: 1fr;
+
+                padding: 2rem 1rem;
+
+            }
+
+            .sidebar {
+
+                order: -1;
+
+            }
+
+            .drama-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .filter-tabs {
+
+                gap: 0.5rem;
+
+            }
+
+            .tab-btn {
+
+                padding: 0.5rem 1rem;
+
+                font-size: 0.9rem;
+
+            }
+
+            .chatbot {
+
+                bottom: 1rem;
+
+                right: 1rem;
+
+            }
+
+            .chatbot-window {
+
+                width: 280px;
+
+                height: 350px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <nav class="nav-container">
+
+            <a href="#" class="logo">🎭 K-Drama Hub</a>
+
+            <ul class="nav-menu">
+
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+
+                <li><a href="#dramas" class="nav-link">Drama</a></li>
+
+                <li><a href="#testimonials" class="nav-link">Ulasan</a></li>
+
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+
+            </ul>
+
+            <div class="nav-controls">
+
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+                <button class="lang-toggle" onclick="toggleLanguage()">🌐 ID</button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- Hero Section with Video Background -->
+
+    <section id="home" class="hero">
+
+        <video class="hero-video" autoplay muted loop>
+
+            <source src="data:video/mp4;base64," type="video/mp4">
+
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h1>Portal Drama Korea Terlengkap</h1>
+
+            <p>Temukan drama Korea terbaru, jadwal tayang, ulasan mendalam, dan komunitas penggemar K-Drama terbesar di Indonesia</p>
+
+            <a href="#dramas" class="cta-button">Jelajahi Drama</a>
+          
+            <button class="video-popup-btn" onclick="openVideoPopup()">▶️ Tonton Trailer </button>
+
+        </div>
+
+    </section>
+
+    <!-- Main Container -->
+
+    <div class="main-container">
+
+        <main class="content">
+
+            <!-- Search Section -->
+
+            <section class="search-section">
+
+                <div class="search-container">
+
+                    <h2>Cari Drama Favorit Anda</h2>
+
+                    <input type="text" class="search-input" placeholder="🔍 Masukkan judul drama, aktor, atau genre..." id="searchInput">
+
+                </div>
+
+            </section>
+
+            <!-- Filter Tabs -->
+
+            <div class="filter-tabs">
+
+                <button class="tab-btn active" onclick="filterDramas('all')">Semua</button>
+
+                <button class="tab-btn" onclick="filterDramas('romance')">Romance</button>
+
+                <button class="tab-btn" onclick="filterDramas('thriller')">Thriller</button>
+
+                <button class="tab-btn" onclick="filterDramas('comedy')">Comedy</button>
+
+                <button class="tab-btn" onclick="filterDramas('fantasy')">Fantasy</button>
+
+            </div>
+
+            <!-- Drama Grid -->
+
+            <section id="dramas">
+
+                <div class="drama-grid" id="dramaGrid">
+
+                    <!-- Drama cards will be populated by JavaScript -->
+
+                </div>
+
+            </section>
+
+        </main>
+
+      <section>
+        
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <h3>🔥 Trending Sekarang</h3>
+
+            <div class="trending-list">
+
+                <div class="trending-item">
+
+                    <h4>Alchemy of Soul S2</h4>
+
+                    <p>👁️ 3.1M penonton</p>
+
+                </div>
+
+                <div class="trending-item">
+
+                    <h4>Happiness</h4>
+
+                    <p>👁️ 2.5M penonton</p>
+
+                </div>
+
+                <div class="trending-item">
+
+                    <h4>Resident Playbook</h4>
+
+                    <p>👁️ 2.1M penonton</p>
+
+                </div>
+
+            </div>
+
+            <h3>📱 Platform Streaming</h3>
+
+            <div class="platform-list">
+
+                <div class="platform-item">Netflix</div>
+
+                <div class="platform-item">Viu</div>
+
+                <div class="platform-item">Disney+</div>
+
+                <div class="platform-item">WeTV</div>
+
+            </div>
+
+            <h3>🏆 Rating Tertinggi</h3>
+
+            <div class="top-rated">
+
+                <div class="rated-item">
+
+                    <span>Alchemy of Soul S2</span>
+
+                    <span>⭐ 9.1</span>
+
+                </div>
+
+                <div class="rated-item">
+
+                    <span>20th Century Girl</span>
+
+                    <span>⭐ 8.8</span>
+
+                </div>
+
+                <div class="rated-item">
+
+                    <span>Happiness</span>
+
+                    <span>⭐ 8.5</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- Testimonials Section -->
+
+    <section id="testimonials" class="testimonials-section">
+
+        <h2>Testimoni Penonton</h2>
+
+        <div class="testimonials-carousel" id="testimonialsCarousel">
+
+            <div class="testimonial active">
+
+                <p class="testimonial-text">"Happiness benar-benar drama thriller yang menegangkan! Plot twist-nya tidak terduga dan akting para pemainnya luar biasa."</p>
+
+                <div class="testimonial-author">- Sarah Kim, Jakarta</div>
+
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+
+            </div>
+
+            <div class="testimonial">
+
+                <p class="testimonial-text">"20th Century Girl membuat saya nostalgia dengan masa remaja. Cerita cintanya sangat manis dan mengharukan."</p>
+
+                <div class="testimonial-author">- Michael Lee, Surabaya</div>
+
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+
+            </div>
+
+            <div class="testimonial">
+
+                <p class="testimonial-text">"Alchemy of Soul Season 2 melebihi ekspektasi! Visual effects-nya memukau dan chemistry para aktor sangat natural."</p>
+
+                <div class="testimonial-author">- Jessica Park, Bandung</div>
+
+                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact & Rating Form -->
+
+    <section id="contact" class="contact-section">
+
+        <div class="contact-container">
+
+            <h2>Saran & Penilaian</h2>
+
+            <form class="contact-form" onsubmit="submitForm(event)">
+
+                <div class="form-group">
+
+                    <label for="name" class="form-label">Nama Lengkap</label>
+
+                    <input type="text" id="name" name="name" class="form-input" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email" class="form-label">Email</label>
+
+                    <input type="email" id="email" name="email" class="form-input" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="drama" class="form-label">Drama yang Dinilai</label>
+
+                    <select id="drama" name="drama" class="form-select" required>
+
+                        <option value="">Pilih Drama</option>
+
+                        <option value="happiness">Happiness</option>
+
+                        <option value="20th-century-girl">20th Century Girl</option>
+
+                        <option value="beyond-the-bar">Beyond the Bar</option>
+
+                        <option value="resident-playbook">Resident Playbook</option>
+
+                        <option value="alchemy-of-soul-s2">Alchemy of Soul Season 2</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label class="form-label">Rating</label>
+
+                    <div class="rating-input">
+
+                        <span class="star-rating" data-rating="1">⭐</span>
+
+                        <span class="star-rating" data-rating="2">⭐</span>
+
+                        <span class="star-rating" data-rating="3">⭐</span>
+
+                        <span class="star-rating" data-rating="4">⭐</span>
+
+                        <span class="star-rating" data-rating="5">⭐</span>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="review" class="form-label">Ulasan & Saran</label>
+
+                    <textarea id="review" name="review" class="form-textarea" placeholder="Bagikan pengalaman menonton dan saran Anda..." required></textarea>
+
+                </div>
+
+                <button type="submit" class="cta-button">Kirim Penilaian</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-section">
+
+                <h3>K-Drama Hub</h3>
+
+                <p>Portal terlengkap untuk penggemar drama Korea di Indonesia. Temukan drama favorit, jadwal tayang, dan bergabung dengan komunitas K-Drama lovers.</p>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Menu Utama</h3>
+
+                <ul class="footer-links">
+
+                    <li><a href="#home">Beranda</a></li>
+
+                    <li><a href="#dramas">Daftar Drama</a></li>
+
+                    <li><a href="#testimonials">Testimoni</a></li>
+
+                    <li><a href="#contact">Kontak</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Platform</h3>
+
+                <ul class="footer-links">
+
+                    <li><a href="#">Netflix</a></li>
+
+                    <li><a href="#">Viu</a></li>
+
+                    <li><a href="#">Disney+</a></li>
+
+                    <li><a href="#">WeTV</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-section">
+
+                <h3>Kontak</h3>
+
+                <ul class="footer-links">
+
+                    <li>📧 info@kdramahub.com</li>
+
+                    <li>📱 +62 21 1234 5678</li>
+
+                    <li>📍 Jakarta, Indonesia</li>
+
+                    <li>🕒 24/7 Online</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>&copy; 2024 K-Drama Hub. All rights reserved. | Privacy Policy | Terms of Service</p>
+
+        </div>
+
+    </footer>
+
+    <!-- Chatbot -->
+
+    <div class="chatbot">
+
+        <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+
+        <div class="chatbot-window" id="chatbotWindow">
+
+            <div class="chatbot-header">
+
+                K-Drama Assistant 🤖
+
+            </div>
+
+            <div class="chatbot-messages" id="chatbotMessages">
+
+                <div class="chat-message bot">Halo! Saya K-Drama Assistant. Ada yang bisa saya bantu tentang drama Korea? 😊</div>
+
+            </div>
+
+            <div class="chatbot-input">
+
+                <input type="text" placeholder="Ketik pesan..." onkeypress="handleChatInput(event)" id="chatInput">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Video Popup -->
+
+    <div class="video-popup" id="videoPopup">
+
+        <div class="video-popup-content">
+
+            <button class="video-popup-close" onclick="closeVideoPopup()">×</button>
+
+            <video controls>
+
+                <source src="data:video/mp4;base64," type="video/mp4">
+
+                <p>Video trailer drama Korea terbaru</p>
+
+            </video>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // Drama data with specific titles requested
+
+        const dramas = [
+
+            {
+
+                title: "Happiness",
+
+                year: "2021",
+
+                genre: "Thriller",
+
+                rating: 8.5,
+
+                description: "Drama thriller tentang wabah virus yang mengubah manusia menjadi zombie di sebuah apartemen mewah. Mengikuti perjuangan pasangan polisi untuk bertahan hidup di tengah chaos.",
+
+                cast: "Han Hyo-joo, Park Hyung-sik",
+
+                category: "thriller",
+
+                viewers: "2.5M"
+
+            },
+
+            {
+
+                title: "20th Century Girl",
+
+                year: "2022",
+
+                genre: "Romance",
+
+                rating: 8.8,
+
+                description: "Film romantis yang mengisahkan cinta remaja di tahun 1999. Seorang gadis SMA yang membantu sahabatnya mendekati cowok idaman, namun malah jatuh cinta sendiri.",
+
+                cast: "Kim You-jung, Byeon Woo-seok",
+
+                category: "romance",
+
+                viewers: "1.8M"
+
+            },
+
+            {
+
+                title: "Beyond the Bar",
+
+                year: "2023",
+
+                genre: "Comedy",
+
+                rating: 7.9,
+
+                description: "Drama komedi tentang kehidupan bartender muda yang bekerja di bar eksklusif. Mengeksplorasi hubungan antar karakter dengan humor yang segar dan cerita yang menghibur.",
+
+                cast: "Lee Jong-suk, IU",
+
+                category: "comedy",
+
+                viewers: "1.2M"
+
+            },
+
+            {
+
+                title: "Resident Playbook",
+
+                year: "2022",
+
+                genre: "Medical",
+
+                rating: 8.3,
+
+                description: "Drama medis yang mengikuti kehidupan dokter residen di rumah sakit besar. Menampilkan tantangan profesional dan personal dalam dunia kedokteran modern.",
+
+                cast: "Jo Jung-suk, Yoo Yeon-seok",
+
+                category: "thriller",
+
+                viewers: "2.1M"
+
+            },
+
+            {
+
+                title: "Alchemy of Soul Season 2",
+
+                year: "2022",
+
+                genre: "Fantasy",
+
+                rating: 9.1,
+
+                description: "Kelanjutan dari season pertama yang fenomenal. Mengisahkan petualangan magis Naksu dan Jang Uk dalam dunia sihir yang penuh intrik, romansa, dan pertarungan epik.",
+
+                cast: "Lee Jae-wook, Go Youn-jung",
+
+                category: "fantasy",
+
+                viewers: "3.1M"
+
+            }
+
+        ];
+
+        let currentFilter = 'all';
+
+        let currentLanguage = 'id';
+
+        let currentTheme = 'light';
+
+        let selectedRating = 0;
+
+        // Initialize page
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            renderDramas(dramas);
+
+            initScrollAnimations();
+
+            startTestimonialCarousel();
+
+            initStarRating();
+
+        });
+
+        // Render dramas
+
+        function renderDramas(dramasToShow) {
+
+            const grid = document.getElementById('dramaGrid');
+
+            grid.innerHTML = '';
+
+            dramasToShow.forEach((drama, index) => {
+
+                const stars = '⭐'.repeat(Math.floor(drama.rating / 2));
+
+                
+
+                const card = document.createElement('div');
+
+                card.className = 'drama-card';
+
+                card.style.animationDelay = `${index * 0.2}s`;
+
+                card.innerHTML = `
+
+                    <div class="drama-title">${drama.title}</div>
+
+                    <div class="drama-year">${drama.year}</div>
+
+                    <div class="drama-genre">${drama.genre}</div>
+
+                    <div class="drama-description">${drama.description}</div>
+
+                    <div class="drama-rating">
+
+                        <span class="stars">${stars}</span>
+
+                        <span class="rating-text">${drama.rating}/10</span>
+
+                        <span class="drama-viewers">👁️ ${drama.viewers}</span>
+
+                    </div>
+
+                    <div class="drama-cast">Pemeran: ${drama.cast}</div>
+
+                `;
+
+                grid.appendChild(card);
+
+            });
+
+        }
+
+        // Filter dramas
+
+        function filterDramas(category) {
+
+            currentFilter = category;
+
+            
+
+            // Update active tab
+
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            event.target.classList.add('active');
+
+            
+
+            // Filter dramas
+
+            const filtered = category === 'all' ? dramas : dramas.filter(drama => drama.category === category);
+
+            renderDramas(filtered);
+
+        }
+
+        // Search functionality
+
+        document.getElementById('searchInput').addEventListener('input', function() {
+
+            const searchTerm = this.value.toLowerCase();
+
+            let filtered = currentFilter === 'all' ? dramas : dramas.filter(drama => drama.category === currentFilter);
+
+            
+
+            if (searchTerm) {
+
+                filtered = filtered.filter(drama => 
+
+                    drama.title.toLowerCase().includes(searchTerm) ||
+
+                    drama.description.toLowerCase().includes(searchTerm) ||
+
+                    drama.cast.toLowerCase().includes(searchTerm)
+
+                );
+
+            }
+
+            
+
+            renderDramas(filtered);
+
+        });
+
+        // Theme toggle
+
+        function toggleTheme() {
+
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            document.documentElement.setAttribute('data-theme', currentTheme);
+
+            
+
+            const themeBtn = document.querySelector('.theme-toggle');
+
+            themeBtn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+
+        }
+
+        // Language toggle
+
+        function toggleLanguage() {
+
+            currentLanguage = currentLanguage === 'id' ? 'en' : 'id';
+
+            const langBtn = document.querySelector('.lang-toggle');
+
+            langBtn.textContent = currentLanguage === 'id' ? '🌐 ID' : '🌐 EN';
+
+            
+
+            // Switch language content
+
+            if (currentLanguage === 'en') {
+
+                document.querySelector('.hero h1').textContent = 'Complete Korean Drama Portal';
+
+                document.querySelector('.hero p').textContent = 'Discover the latest Korean dramas, schedules, in-depth reviews, and the largest K-Drama fan community in Indonesia';
+
+                document.querySelector('.search-container h2').textContent = 'Find Your Favorite Drama';
+
+                document.querySelector('.search-input').placeholder = '🔍 Enter drama title, actor, or genre...';
+
+            } else {
+
+                document.querySelector('.hero h1').textContent = 'Portal Drama Korea Terlengkap';
+
+                document.querySelector('.hero p').textContent = 'Temukan drama Korea terbaru, jadwal tayang, ulasan mendalam, dan komunitas penggemar K-Drama terbesar di Indonesia';
+
+                document.querySelector('.search-container h2').textContent = 'Cari Drama Favorit Anda';
+
+                document.querySelector('.search-input').placeholder = '🔍 Masukkan judul drama, aktor, atau genre...';
+
+            }
+
+        }
+
+        // Scroll animations
+
+        function initScrollAnimations() {
+
+            const observer = new IntersectionObserver((entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = '1';
+
+                        entry.target.style.transform = 'translateY(0)';
+
+                    }
+
+                });
+
+            });
+
+            
+
+            document.querySelectorAll('.drama-card, .testimonial, .sidebar').forEach(el => {
+
+                observer.observe(el);
+
+            });
+
+        }
+
+        // Testimonial carousel
+
+        function startTestimonialCarousel() {
+
+            const testimonials = document.querySelectorAll('.testimonial');
+
+            let currentIndex = 0;
+
+            
+
+            setInterval(() => {
+
+                testimonials[currentIndex].classList.remove('active');
+
+                currentIndex = (currentIndex + 1) % testimonials.length;
+
+                testimonials[currentIndex].classList.add('active');
+
+            }, 4000);
+
+        }
+
+        // Star rating system
+
+        function initStarRating() {
+
+            const stars = document.querySelectorAll('.star-rating');
+
+            
+
+            stars.forEach((star, index) => {
+
+                star.addEventListener('click', () => {
+
+                    selectedRating = index + 1;
+
+                    updateStarDisplay();
+
+                });
+
+                
+
+                star.addEventListener('mouseover', () => {
+
+                    highlightStars(index + 1);
+
+                });
+
+            });
+
+            
+
+            document.querySelector('.rating-input').addEventListener('mouseleave', () => {
+
+                updateStarDisplay();
+
+            });
+
+        }
+
+        function highlightStars(rating) {
+
+            const stars = document.querySelectorAll('.star-rating');
+
+            stars.forEach((star, index) => {
+
+                if (index < rating) {
+
+                    star.classList.add('active');
+
+                } else {
+
+                    star.classList.remove('active');
+
+                }
+
+            });
+
+        }
+
+        function updateStarDisplay() {
+
+            highlightStars(selectedRating);
+
+        }
+
+        // Chatbot functionality
+
+        function toggleChatbot() {
+
+            const chatbotWindow = document.getElementById('chatbotWindow');
+
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+
+        }
+
+        function handleChatInput(event) {
+
+            if (event.key === 'Enter') {
+
+                const input = event.target;
+
+                const message = input.value.trim();
+
+                
+
+                if (message) {
+
+                    addChatMessage(message, 'user');
+
+                    input.value = '';
+
+                    
+
+                    // Simulate bot response
+
+                    setTimeout(() => {
+
+                        const responses = [
+
+                            'Terima kasih atas pertanyaannya! 😊',
+
+                            'Drama mana yang sedang Anda tonton sekarang?',
+
+                            'Saya merekomendasikan Alchemy of Soul Season 2 untuk genre fantasy!',
+
+                            'Happiness adalah pilihan tepat untuk penggemar thriller zombie.',
+
+                            'Apakah Anda butuh rekomendasi drama berdasarkan genre tertentu?'
+
+                        ];
+
+                        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+
+                        addChatMessage(randomResponse, 'bot');
+
+                    }, 1000);
+
+                }
+
+            }
+
+        }
+
+        function addChatMessage(message, sender) {
+
+            const messagesContainer = document.getElementById('chatbotMessages');
+
+            const messageDiv = document.createElement('div');
+
+            messageDiv.className = `chat-message ${sender}`;
+
+            messageDiv.textContent = message;
+
+            messagesContainer.appendChild(messageDiv);
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        }
+
+        // Video popup
+
+        function openVideoPopup() {
+
+            document.getElementById('videoPopup').style.display = 'flex';
+
+        }
+
+        function closeVideoPopup() {
+
+            const popup = document.getElementById('videoPopup');
+
+            popup.style.display = 'none';
+
+            const video = popup.querySelector('video');
+
+            video.pause();
+
+        }
+
+        // Form submission
+
+        function submitForm(event) {
+
+            event.preventDefault();
+
+            
+
+            const formData = new FormData(event.target);
+
+            const data = Object.fromEntries(formData);
+
+            data.rating = selectedRating;
+
+            
+
+            // Simulate form submission
+
+            alert(`Terima kasih ${data.name}! Penilaian Anda untuk "${data.drama}" dengan rating ${selectedRating} bintang telah tersimpan. 🌟`);
+
+            event.target.reset();
+
+            selectedRating = 0;
+
+            updateStarDisplay();
+
+        }
+
+        // Smooth scrolling for navigation links
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+            anchor.addEventListener('click', function (e) {
+
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+
+                    target.scrollIntoView({
+
+                        behavior: 'smooth',
+
+                        block: 'start'
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        // Header scroll effect
+
+        window.addEventListener('scroll', function() {
+
+            const header = document.querySelector('.header');
+
+            if (window.scrollY > 100) {
+
+                header.style.background = currentTheme === 'light' 
+
+                    ? 'rgba(255, 255, 255, 0.98)' 
+
+                    : 'rgba(17, 24, 39, 0.98)';
+
+            } else {
+
+                header.style.background = currentTheme === 'light' 
+
+                    ? 'rgba(255, 255, 255, 0.95)' 
+
+                    : 'rgba(17, 24, 39, 0.95)';
+
+            }
+
+        });
+
+        // Close video popup when clicking outside
+
+        document.getElementById('videoPopup').addEventListener('click', function(e) {
+
+            if (e.target === this) {
+
+                closeVideoPopup();
+
+            }
+
+        });
+
+    </script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98f426a6a01cce27',t:'MTc2MDU4MjAwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>
+
